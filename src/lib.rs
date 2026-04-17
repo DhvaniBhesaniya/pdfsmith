@@ -1,20 +1,4 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// pdfsmith — A fully customizable Markdown / JSON → PDF library
-//
-// Generate PDFs from Markdown text, structured JSON, or raw HTML.
-// Every aspect is under the user's control: CSS, page size, margins,
-// headers, footers, Markdown extensions, Chrome options.
-//
-// # Quick start
-// ```no_run
-// use pdfsmith::PdfBuilder;
-//
-// let pdf = PdfBuilder::new()
-//     .from_markdown("# Hello\n\nWorld.")
-//     .unwrap();
-// std::fs::write("hello.pdf", pdf).unwrap();
-// ```
-// ─────────────────────────────────────────────────────────────────────────────
+#![doc = include_str!("../README_DOCS.md")]
 
 pub mod config;
 pub mod css;

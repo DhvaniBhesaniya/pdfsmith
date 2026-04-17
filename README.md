@@ -1,16 +1,22 @@
-# pdfsmith
+# pdfsmith 🦀
 
 A fully customizable Rust library for generating PDFs from **Markdown**, **structured JSON**, or **raw HTML**.
 
-Everything is under the user's control — CSS styling, page size, margins, orientation, headers, footers, Markdown extensions, and Chrome rendering options. Supply your own CSS or use the clean built-in default. Need a header? Configure it. Don't need one? Skip it. Every decision is yours.
+Everything is under the user's control — CSS styling, page size, margins, orientation, headers, footers, Markdown extensions, and Chrome rendering options. Supply your own CSS or use the clean built-in default.
+
+- 🚀 Built with Rust
+- 📄 Outputs polished PDF documents
+- ✨ Supports Markdown, JSON, and HTML input
 
 ---
 
 ## Table of Contents
 
-- [mdoc\_pdf](#pdfsmith)
+- [pdfsmith](#pdfsmith)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
+  - [API Overview](#api-overview)
+  - [Examples Summary](#examples-summary)
   - [Prerequisites](#prerequisites)
     - [Install Chromium / Chrome](#install-chromium--chrome)
       - [Ubuntu / Debian](#ubuntu--debian)
@@ -107,6 +113,24 @@ Everything is under the user's control — CSS styling, page size, margins, orie
 | **Markdown Extensions** | Tables, footnotes, strikethrough, task lists, autolinks, superscript, description lists — all toggleable |
 | **File Input** | Read `.md` or `.json` files directly from disk |
 | **Builder Pattern** | Fluent, chainable API — configure only what you need |
+
+---
+
+## API Overview
+
+- `PdfBuilder` — main fluent builder for generating PDFs from Markdown, JSON, or HTML.
+- `PdfConfig` — full PDF generation configuration.
+- `PaperSize`, `PageMargins`, `HeaderConfig`, `FooterConfig`, `MarkdownOptions` — core configuration helpers.
+- `DEFAULT_CSS` — inspect or reuse the built-in stylesheet.
+- `MdocError` / `Result` — error type and result alias used throughout the crate.
+
+## Examples Summary
+
+- Minimal Markdown PDF generation
+- JSON document generation with `paraSequence` headings
+- Custom CSS styling and theming
+- Full document generation with headers, footers, and page options
+- Report-style documents, newsletters, technical docs, and images
 
 ---
 
@@ -962,7 +986,7 @@ cargo run --example technical_doc
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/pdfsmith.git
+git clone github.com/DhvaniBhesaniya/pdfsmith.git
 cd pdfsmith
 
 # Run any example
