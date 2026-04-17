@@ -4,7 +4,6 @@
 [![Crates.io](https://img.shields.io/crates/v/pdfsmith.svg?style=for-the-badge&logo=rust&logoColor=white)](https://crates.io/crates/pdfsmith)
 [![Docs.rs](https://img.shields.io/docsrs/pdfsmith?style=for-the-badge&logo=docs.rs&logoColor=white)](https://docs.rs/pdfsmith)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge&logo=mit&logoColor=white)](https://opensource.org/licenses/MIT)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/DhvaniBhesaniya/pdfsmith/ci.yml?branch=main&style=for-the-badge&logo=github&logoColor=white)](https://github.com/DhvaniBhesaniya/pdfsmith/actions)
 
 A fully customizable Rust library for generating PDFs from **Markdown**, **structured JSON**, or **raw HTML**! 🚀
 
