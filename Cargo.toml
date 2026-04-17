@@ -1,6 +1,6 @@
 [package]
 name = "pdfsmith"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 description = "A customizable PDF generation library from Markdown or structured JSON input"
 license = "MIT"
