@@ -1,4 +1,4 @@
-# pdfsmith 🦀
+# pdfsmith <img src="assets/pdfsmith.svg" width="80" height="60" alt="pdfsmith">
 
 [![Rust](https://img.shields.io/badge/rust-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white)](https://www.rust-lang.org/)
 [![Crates.io](https://img.shields.io/crates/v/pdfsmith.svg?style=for-the-badge&logo=rust&logoColor=white)](https://crates.io/crates/pdfsmith)
@@ -24,7 +24,7 @@ Everything is under the user's control — CSS styling, page size, margins, orie
 
 ## Table of Contents
 
-- [pdfsmith 🦀](#pdfsmith-)
+- [pdfsmith ](#pdfsmith-)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [API Overview](#api-overview)
@@ -1216,7 +1216,7 @@ MIT
 
 ## Table of Contents
 
-- [pdfsmith 🦀](#pdfsmith-)
+- [pdfsmith ](#pdfsmith-)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [API Overview](#api-overview)
