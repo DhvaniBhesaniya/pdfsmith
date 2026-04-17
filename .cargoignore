@@ -1,0 +1,18 @@
+# ❌ Remove generated PDFs
+examples/output_pdfs/
+
+# ❌ Build artifacts
+target/
+
+# ❌ Temp files
+*.html
+*.log
+
+# ❌ Optional: remove heavy assets
+*.png
+*.jpg
+*.jpeg
+
+# ❌ Git stuff
+.git
+.gitignore
