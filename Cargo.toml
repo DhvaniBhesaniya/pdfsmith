@@ -6,6 +6,11 @@ description = "A customizable PDF generation library from Markdown or structured
 license = "MIT"
 keywords = ["pdf", "markdown", "html", "chrome", "document"]
 categories = ["document-processing", "text-processing"]
+repository = "https://github.com/yourusername/pdfsmith"
+homepage = "https://github.com/yourusername/pdfsmith"
+documentation = "https://docs.rs/pdfsmith"
+readme = "README.md"
+rust-version = "1.88"  # minimum Rust version required
 
 [lib]
 name = "pdfsmith"
