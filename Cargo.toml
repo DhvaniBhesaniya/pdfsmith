@@ -1,0 +1,55 @@
+[package]
+name = "pdfsmith"
+version = "0.1.0"
+edition = "2024"
+description = "A customizable PDF generation library from Markdown or structured JSON input"
+license = "MIT"
+keywords = ["pdf", "markdown", "html", "chrome", "document"]
+categories = ["document-processing", "text-processing"]
+
+[lib]
+name = "pdfsmith"
+path = "src/lib.rs"
+
+[dependencies]
+comrak = "0.52.0"
+headless_chrome = "1.0.14"
+thiserror = "2"
+serde_json = { version = "1.0", features = ["preserve_order"] }
+serde = { version = "1", features = ["derive"] }
+log = "0.4"
+
+[dev-dependencies]
+env_logger = "0.11"
+
+[[example]]
+name = "from_markdown"
+path = "examples/from_markdown.rs"
+
+[[example]]
+name = "from_json"
+path = "examples/from_json.rs"
+
+[[example]]
+name = "custom_css"
+path = "examples/custom_css.rs"
+
+[[example]]
+name = "full_document"
+path = "examples/full_document.rs"
+
+[[example]]
+name = "report_style"
+path = "examples/report_style.rs"
+
+[[example]]
+name = "with_images"
+path = "examples/with_images.rs"
+
+[[example]]
+name = "newsletter"
+path = "examples/newsletter.rs"
+
+[[example]]
+name = "technical_doc"
+path = "examples/technical_doc.rs"

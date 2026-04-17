@@ -1,0 +1,174 @@
+// examples/from_markdown.rs
+//
+// Basic Markdown → PDF.  No header/footer — just content + heading numbers.
+// Produces a 2+ page PDF to show page-break behaviour.
+//
+// Run:  cargo run --example from_markdown
+
+use pdfsmith::PdfBuilder;
+
+fn main() {
+    env_logger::init();
+
+    let markdown = r##"
+# Welcome to pdfsmith
+
+This PDF was generated from **Markdown** using the `pdfsmith` crate.
+Everything you see here — the fonts, spacing, table styles, code blocks —
+comes from the built-in default CSS.  No extra configuration needed.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+## Features
+
+`pdfsmith` converts three kinds of input into beautifully formatted PDFs:
+
+| Input Type | Method | Description |
+|------------|--------|-------------|
+| Markdown | `from_markdown()` | Standard Markdown text or file |
+| JSON | `from_json()` | Structured content blocks with `paraSequence` numbering |
+| Raw HTML | `from_html()` | Pre-built HTML passed directly to Chrome |
+
+Additional capabilities:
+
+- **Custom CSS** — replace or extend the default stylesheet
+- **Paper sizes** — A4, Letter, Legal, or any custom dimensions
+- **Page margins** — independent top/bottom/left/right in inches
+- **Headers & footers** — simple left/center/right text or full custom HTML
+- **Heading numbers** — automatic hierarchical numbering (1, 1.1, 1.1.1)
+- **Markdown extensions** — tables, footnotes, task lists, strikethrough, and more
+- **Chrome tuning** — viewport size, page-load wait, background printing
+
+## Getting Started
+
+Add the crate to your project:
+
+```toml
+[dependencies]
+pdfsmith = "0.1.0"
+```
+
+Then generate a PDF in three lines:
+
+```rust
+use pdfsmith::PdfBuilder;
+
+fn main() {
+    let pdf = PdfBuilder::new()
+        .title("My Document")
+        .heading_numbers(true)
+        .from_markdown("# Hello\n\n## World")
+        .expect("PDF generation failed");
+
+    std::fs::write("output.pdf", &pdf).unwrap();
+}
+```
+
+## Table Example
+
+Here's a larger table to demonstrate column alignment and alternating row colours:
+
+| Language   | Paradigm     | Typing  | Use Case            | Year |
+|------------|-------------|---------|---------------------|------|
+| Rust       | Systems     | Static  | OS, CLI, WebAssembly | 2010 |
+| Python     | Scripting   | Dynamic | Data science, web   | 1991 |
+| Go         | Concurrent  | Static  | Cloud, networking   | 2009 |
+| TypeScript | Multi       | Static  | Frontend, Node.js   | 2012 |
+| C          | Procedural  | Static  | Embedded, kernels   | 1972 |
+| Haskell    | Functional  | Static  | Compilers, finance  | 1990 |
+
+## Code Blocks
+
+### Rust
+
+```rust
+pub struct PdfBuilder {
+    config: PdfConfig,
+}
+
+impl PdfBuilder {
+    pub fn new() -> Self {
+        Self { config: PdfConfig::default() }
+    }
+
+    pub fn title(mut self, title: impl Into<String>) -> Self {
+        self.config.title = title.into();
+        self
+    }
+
+    pub fn from_markdown(self, md: &str) -> Result<Vec<u8>> {
+        let body = markdown_to_body_html(md, &self.config)?;
+        let html = wrap_body_in_html_document(&body, &self.config);
+        render_html_to_pdf(&html, &self.config)
+    }
+}
+```
+
+### Python
+
+```python
+import subprocess, json
+
+def generate_report(data: dict) -> bytes:
+    """Generate a PDF report from structured data."""
+    blocks = []
+    for section in data["sections"]:
+        blocks.append({
+            "type": "heading",
+            "paraSequence": section["id"],
+            "text": section["title"],
+        })
+        blocks.append({
+            "type": "paragraph",
+            "text": section["body"],
+        })
+    return blocks
+```
+
+## Blockquotes & Lists
+
+> The best way to predict the future is to invent it.
+> — Alan Kay
+
+Ordered list of project milestones:
+
+1. **Design phase** — architecture diagrams, API surface, data models
+2. **Implementation** — core library, parser, renderer, template engine
+3. **Testing** — unit tests, integration tests, visual regression
+4. **Documentation** — README, API docs, examples, tutorials
+5. **Release** — crates.io publish, changelog, announcement
+
+Unordered feature checklist:
+
+- [x] Markdown to PDF conversion
+- [x] JSON content blocks with `paraSequence`
+- [x] Custom CSS support (replace or extend)
+- [x] Header and footer templates
+- [x] Automatic heading numbering
+- [ ] Table of contents generation
+- [ ] Syntax highlighting for code blocks
+
+## Summary
+
+This example demonstrates that even with **zero configuration** beyond
+`heading_numbers(true)`, you get a clean, professional-looking multi-page
+PDF.  The default stylesheet handles everything — headings, tables, code
+blocks, lists, blockquotes, and horizontal rules.
+
+---
+
+*Generated by pdfsmith — simple, clean, fully under your control.*
+"##;
+
+    let pdf = PdfBuilder::new()
+        .title("pdfsmith Demo")
+        .heading_numbers(true)
+        .from_markdown(markdown)
+        .expect("Failed to generate PDF");
+
+    std::fs::write("examples/output_pdfs/from_markdown.pdf", &pdf).expect("Failed to write PDF");
+    println!("PDF saved to examples/output_pdfs/from_markdown.pdf ({} bytes)", pdf.len());
+}
+
